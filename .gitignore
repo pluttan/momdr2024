@@ -1,0 +1,16 @@
+# Arduino / PlatformIO
+.pio/
+.pioenvs/
+build/
+
+# Credentials (copy config.h.example → config.h and fill in)
+config.h
+
+# System
+.DS_Store
+
+# Heavy assets
+*.png
+*.jpg
+*.jpeg
+*.zip
