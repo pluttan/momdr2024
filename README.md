@@ -67,7 +67,7 @@ Routes 01–11 are prize chains; 12–15 are trap-locations; 16 is a rest stop. 
 ```
 
 1. Power on the ESP8266
-2. Connect a phone to WiFi `HappyBirsday` (password: `30072024`)
+2. Connect a phone to WiFi `HappyBirsday` (password: see `config.h`)
 3. Open `http://192.168.4.1/`
 4. Follow the riddles and enter codes from the dart balloons
 
