@@ -1,13 +1,9 @@
-![Header](header.png)
-
 <div align="center">
 
 # MomDR2024
 
 **Birthday quest game running on ESP8266**
 
-[![License](https://img.shields.io/badge/license-MIT-2C2C2C?style=for-the-badge&labelColor=1E1E1E)](LICENSE)
-[![ESP8266](https://img.shields.io/badge/ESP8266-NodeMCU-2C2C2C?style=for-the-badge&logo=espressif&labelColor=1E1E1E)]()
 
 </div>
 
@@ -25,6 +21,8 @@ A birthday scavenger hunt game hosted on an ESP8266 access point. Players connec
 
 ## ■ Stack
 
+<div align="center">
+
 | Component | Technology |
 |-----------|------------|
 | MCU | ESP8266 (NodeMCU 1.0) |
@@ -34,9 +32,38 @@ A birthday scavenger hunt game hosted on an ESP8266 access point. Players connec
 | UI | Inline HTML/CSS served from sketch (Catppuccin palette, animated gradient, glassmorphism) |
 | Client logic | Per-code JS generated on the fly at `/js?cd=<code>` for input validation + redirect |
 
+</div>
+
+## ■ How It Works
+
+```
+1. ESP8266 boots in SoftAP mode, creating the WiFi network `HappyBirsday`
+2. Player connects a phone to that network and opens http://192.168.4.1/ — the device serves the login page from flash
+3. Each physical location has a dart balloon with a unique 5-digit code inside; entering the code redirects to the next riddle page
+4. Riddle text points to the next real-world spot; the player navigates there and finds the next balloon
+5. Trap-locations require collecting multiple items (progress tracked in RAM) before the route continues
+6. Completing a full route chain reveals the hidden gift description on the final page
+```
+
+## ■ Usage
+
+```bash
+# Open Arduino IDE
+# Select board: NodeMCU 1.0 (ESP-12E Module)
+# Open MomDR2024.ino (routes.ino and resourses.ino compile alongside it)
+# Upload
+```
+
+1. Power on the ESP8266
+2. Connect a phone to WiFi `HappyBirsday` (password: `30072024`)
+3. Open `http://192.168.4.1/`
+4. Follow the riddles and enter codes from the dart balloons
+
 ## ■ Quest Locations
 
 Routes 01–11 are prize chains; 12–15 are trap-locations; 16 is a rest stop. Steps below count the screens in each chain.
+
+<div align="center">
 
 | Route | Area | Steps | Prize / Goal |
 |-------|------|-------|--------------|
@@ -57,19 +84,7 @@ Routes 01–11 are prize chains; 12–15 are trap-locations; 16 is a rest stop. 
 | 15 | Don't cut the pipe (trap) | secret task | unlock next |
 | 16 | Rest | 1 | take a break |
 
-## ■ Usage
-
-```bash
-# Open Arduino IDE
-# Select board: NodeMCU 1.0 (ESP-12E Module)
-# Open MomDR2024.ino (routes.ino and resourses.ino compile alongside it)
-# Upload
-```
-
-1. Power on the ESP8266
-2. Connect a phone to WiFi `HappyBirsday` (password: see `config.h`)
-3. Open `http://192.168.4.1/`
-4. Follow the riddles and enter codes from the dart balloons
+</div>
 
 ## ■ Files
 
